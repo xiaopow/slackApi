@@ -23,22 +23,4 @@ app.controller('MusicPlayerCtrl', ['$scope', '$http', '$location', '$sce', funct
     $scope.messages = response;
   });
 
-  // $http({
-  //   method: 'POST',
-  //   url: 'https://slack.com/api/groups.history?token=xoxp-3171645816-3866436144-5155539063-59168a',
-  //   data: data
-  // }).success(function(res){
-  //   console.log(res);
-  // });
-
-  // $.ajax({
-  //   type: 'GET',
-  //   url: 'http://www.dnndev.me/mysite/builder/API/echo',
-  //   dataType: 'json',
-  //   data: { message: 'Hello' },
-  //   crossDomain: true,
-  //   headers: { 'Key': 'Bearer 7680ff6e-1362-4236-a9cd-c6bc8b6f13ea' },
-  //   success: function (result) { console.log(result); }
-  // });
-
 }]);
