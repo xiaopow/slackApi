@@ -1,0 +1,24 @@
+'use strict'; // Make sure you don't have syntax errors
+
+// var app = angular.module('appName', ['oneDependency']);
+var app = angular.module('slackApi', ['ngRoute', 'ngSanitize']);
+
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  // Configure Angular Routes
+  $routeProvider
+    .when('/', {
+      templateUrl: "<%= asset_path('home/index.html') %>",
+      controller: 'HomeCtrl'
+    })
+    .when('/musicplayer', {
+      templateUrl: "<%= asset_path('musicplayer/index.html') %>",
+      controller: 'MusicPlayerCtrl'
+    })
+
+    // .
+    // otherwise({
+    //   redirectTo: '/'
+    // });
+
+    // $locationProvider.html5Mode(true);
+}]);

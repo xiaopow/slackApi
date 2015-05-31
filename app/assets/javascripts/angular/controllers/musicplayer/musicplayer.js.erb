@@ -1,0 +1,44 @@
+app.controller('MusicPlayerCtrl', ['$scope', '$http', '$location', '$sce', function($scope, $http, $location, $sce){
+  
+  $scope.link = "";
+
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  }
+
+  var data = {
+    'token': "xoxp-3171645816-3866436144-5155539063-59168a",
+    'channel': "G03PTETT3"
+  }
+
+  $http.get('https://slack.com/api/groups.history?token=xoxp-3171645816-3866436144-5155539063-59168a&channel=G03PTETT3&count=1').success(function(response) {
+    link = response.messages[0].text;
+    link = link.split(" ");
+    if (link[0] = "music") {
+      var uri = link[1].match( /v=(.*)$/g )[0];
+      uri = uri.slice(2, -1);
+      console.log(uri);
+      $scope.link = "https://www.youtube.com/embed/" + uri + "?rel=0&amp;controls=0&amp;showinfo=0&amp;loop=1&amp;autoplay=1";
+    }
+    $scope.messages = response;
+  });
+
+  // $http({
+  //   method: 'POST',
+  //   url: 'https://slack.com/api/groups.history?token=xoxp-3171645816-3866436144-5155539063-59168a',
+  //   data: data
+  // }).success(function(res){
+  //   console.log(res);
+  // });
+
+  // $.ajax({
+  //   type: 'GET',
+  //   url: 'http://www.dnndev.me/mysite/builder/API/echo',
+  //   dataType: 'json',
+  //   data: { message: 'Hello' },
+  //   crossDomain: true,
+  //   headers: { 'Key': 'Bearer 7680ff6e-1362-4236-a9cd-c6bc8b6f13ea' },
+  //   success: function (result) { console.log(result); }
+  // });
+
+}]);
