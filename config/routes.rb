@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   #   resources :products
 
   root 'home#index'
-  get 'musicplayer' => 'musicplayer#play'
 
   # Example resource route with options:
   #   resources :products do

@@ -6,12 +6,7 @@ app.controller('MusicPlayerCtrl', ['$scope', '$http', '$location', '$sce', funct
     return $sce.trustAsResourceUrl(src);
   }
 
-  var data = {
-    'token': "xoxp-3171645816-3866436144-5155539063-59168a",
-    'channel': "G03PTETT3"
-  }
-
-  $http.get('https://slack.com/api/groups.history?token=xoxp-3171645816-3866436144-5155539063-59168a&channel=G03PTETT3&count=1').success(function(response) {
+  $http.get('https://slack.com/api/groups.history?token=' + "<%= ENV['SLACK_API'] %>" + '&channel=G03PTETT3&count=1').success(function(response) {
     link = response.messages[0].text;
     link = link.split(" ");
     if (link[0] = "music") {
